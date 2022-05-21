@@ -1,0 +1,118 @@
+{
+  "main": {
+    "id": "8a32b3d94d019d6b",
+    "type": "split",
+    "children": [
+      {
+        "id": "d01baa664549fb93",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Computer Science/Maven/3 Maven Dependency Management.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "24f925289ce35f46",
+    "type": "split",
+    "children": [
+      {
+        "id": "ced1394e57877fbd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "436a6a1f9736b098",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "d623a02be6d1f266",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "02f103f08d952624",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "87a3cc63752563ad",
+    "type": "split",
+    "children": [
+      {
+        "id": "a4b3efbeb203f099",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "956434e515f8e8c2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Computer Science/Maven/3 Maven Dependency Management.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "8d3b047c465cabe2",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "d01baa664549fb93",
+  "lastOpenFiles": [
+    "Computer Science/Maven/3 Maven Dependency Management.md",
+    "Computer Science/Maven/2 Setting Up Maven.md",
+    "Computer Science/FTP.md",
+    "Assets/Maven Dependency Management.png",
+    "Computer Science/Maven/1 Getting Started with Maven.md",
+    "Assets/Obsidian basics.md",
+    "Computer Science/Log4J.md",
+    "Computer Science/Ant.md",
+    "Assets/Build tool usage report.png",
+    "Computer Science/Maven/Introducing Maven table of contents.md"
+  ]
+}
