@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "d01baa664549fb93",
+        "id": "a407e2bbdeadf4a3",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Computer Science/Maven/3 Maven Dependency Management.md",
+            "file": "Computer Science/Terraform/Terraform Adoption Stages.md",
             "mode": "source",
             "source": false
           }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Computer Science/Maven/3 Maven Dependency Management.md",
+                "file": "Computer Science/Terraform/Terraform Adoption Stages.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,17 +103,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "d01baa664549fb93",
+  "active": "a407e2bbdeadf4a3",
   "lastOpenFiles": [
-    "Computer Science/Maven/3 Maven Dependency Management.md",
-    "Assets/Maven Dependency Tree.png",
-    "Assets/Enterprise Maven Repository Architecture.png",
-    "Computer Science/Maven/2 Setting Up Maven.md",
-    "Computer Science/FTP.md",
-    "Assets/Maven Dependency Management.png",
+    "Computer Science/Terraform/Terraform Adoption Stages.md",
+    "Computer Science/Terraform/Introduction to Terraform.md",
     "Computer Science/Maven/1 Getting Started with Maven.md",
-    "Assets/Obsidian basics.md",
-    "Computer Science/Log4J.md",
-    "Computer Science/Ant.md"
+    "Computer Science/Maven/9 Continuous Integration.md",
+    "Computer Science/Maven/Introducing Maven table of contents.md",
+    "Obsidian basics.md",
+    "Computer Science/Maven/3 Maven Dependency Management.md",
+    "Computer Science/Maven/6 Maven Archetypes.md",
+    "Computer Science/Maven/8 Maven Release.md",
+    "Computer Science/Maven/Maven's initial roots.md"
   ]
 }
