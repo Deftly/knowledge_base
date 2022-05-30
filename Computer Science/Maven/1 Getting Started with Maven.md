@@ -14,7 +14,7 @@
 # Declarative Dependency Management
 - Most Java projects rely on other projects and frameworks to function properly, downloading these dependencies and keeping track of their versions manually can be cumbersome.
 - Maven provides a convenient way to declare these project dependencies in a separate *pom.xml* file. It then automatically downloads those dependencies and allows you to use them in your project.
-	- It is important to not that in the *pom.xml* you specify the *what* and not the *how*. The *pom.xml* can also serve as a documentation tool, conveying your project dependencies and their versions.
+	- It is important to note that in the *pom.xml* you specify the *what* and not the *how*. The *pom.xml* can also serve as a documentation tool, conveying your project dependencies and their versions.
 
 
 # Plug-ins

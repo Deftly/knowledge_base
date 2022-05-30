@@ -52,4 +52,5 @@
 	- What we want to do this is to have anything that has an API and has a life cycle associated with it, enable it to be a provider so that Terraform can be used to manage our end to end delivery.  
 
 ### Continue Reading
+[[Terraform Up & Running table of contents]]
 [[Terraform Adoption Stages]]

@@ -27,4 +27,7 @@
 - The other challenge is how do we allow all this to be consumed by many users while still being safe.
 	- Sentinel is an embedded policy as code framework which allows you to define a sandbox, and any operation  that is within that sandbox is allowed.
 	- This will prevent things like deploying things to the wrong region, or bypassing security controls and rules. 
-	- Without a policy as code system we would likely have to default to some form of ticketing system where changes are reviewed manually and we loose a lot of the efficiency compared to an agile self-service infrastructure. 
+	- Without a policy as code system we would likely have to default to some form of ticketing system where changes are reviewed manually and we loose a lot of the efficiency compared to an agile self-service infrastructure.  
+
+### Continue Reading
+[[Terraform Up & Running table of contents]]

@@ -118,3 +118,29 @@ http://maven.apache.org/xsd/settings-1.0.0.xsd">
 ```
 
 ## Dependency Scope
+- Maven uses the concept of scope to allow you to specify when and where you need a particular dependency.
+- Maven provides the following six scopes:
+	- **compile:** Available in the class path in all phases on a project build, test and run. This is the default scope.
+	- **provided:** Available in the class path during the build and test phases. They don't get bundled within the generated artifact. 
+	- **runtime:** Are not available in the class path during the build phase. Instead they get bundled in the generated artifact and are available during runtime.
+	- **test:** Available during the test phase. [[JUnit]] is a good example of a dependency with test scope.
+	- **system:** Similar to dependencies with the provided scope, except that these dependencies are not retrieved from the repository. Instead, a hard-coded path to the file system is specified from which the dependencies are used.\
+	- **import:** Applicable for *.pom* file dependencies only. It allows you to include dependency management information from a remote *.pom* file.  
+
+## Manual Dependency Installation
+- Ideally you will be pulling dependencies in your projects from public repositories or your enterprise repository manager. However there will be times where you need an archive available in your local repository.
+	- An example would be you are waiting on your system administrators to add the required *JAR* file to your enterprise repository manager.
+- Maven provides a way of installing an archive into your local repository with the install plugin:
+```bash
+[user@host]$ mvn install:install-file -DgroupID=com.apress.gswmbook -DartifactId=test    -Dversion=1.0.0 -Dfile=/apress/gswm-book/chapter3/test.jar -Dpackaging=jar -DgeneratePom=true
+```
+- After seeing the BUILD SUCCESS message, you can verify the installation by going to your local Maven repository.  
+
+## Summary
+- Dependency management is at the heart of Maven
+- Every nontrivial Java project relies on open source or external artifacts and Maven's dependency management automates the process of retrieving those artifacts and including them in the right stages of the build process.  
+
+### Continue Reading
+[[4 Maven Project Basics]]
+[[2 Setting Up Maven]]
+[[Introducing Maven table of contents]]
