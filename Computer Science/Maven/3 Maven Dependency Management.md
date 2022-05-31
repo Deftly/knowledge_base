@@ -123,7 +123,7 @@ http://maven.apache.org/xsd/settings-1.0.0.xsd">
 	- **compile:** Available in the class path in all phases on a project build, test and run. This is the default scope.
 	- **provided:** Available in the class path during the build and test phases. They don't get bundled within the generated artifact. 
 	- **runtime:** Are not available in the class path during the build phase. Instead they get bundled in the generated artifact and are available during runtime.
-	- **test:** Available during the test phase. [[JUnit]] is a good example of a dependency with test scope.
+	- **test:** Available during the test phase. [[JUnit 5|JUnit]] is a good example of a dependency with test scope.
 	- **system:** Similar to dependencies with the provided scope, except that these dependencies are not retrieved from the repository. Instead, a hard-coded path to the file system is specified from which the dependencies are used.\
 	- **import:** Applicable for *.pom* file dependencies only. It allows you to include dependency management information from a remote *.pom* file.  
 

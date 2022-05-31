@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "95c91294c858074f",
+        "id": "793a6e23d961dff5",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Computer Science/Maven/4 Maven Project Basics.md",
+            "file": "Computer Science/JUnit/1 JUnit jump-start.md",
             "mode": "source",
             "source": false
           }
@@ -61,8 +61,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "87a3cc63752563ad",
@@ -78,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Computer Science/Maven/4 Maven Project Basics.md",
+                "file": "Computer Science/JUnit/1 JUnit jump-start.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,17 +103,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "95c91294c858074f",
+  "active": "793a6e23d961dff5",
   "lastOpenFiles": [
-    "Computer Science/Maven/4 Maven Project Basics.md",
-    "SQL.md",
-    "Computer Science/Maven/1 Getting Started with Maven.md",
-    "Computer Science/Maven/Introducing Maven table of contents.md",
-    "Assets/Maven Java project structure.png",
-    "Computer Science/Maven/5 Maven Life cycle.md",
-    "Computer Science/Maven/3 Maven Dependency Management.md",
-    "Computer Science/Maven/2 Setting Up Maven.md",
-    "Computer Science/JUnit/JUnit.md",
-    "Computer Science/Terraform/Terraform Up & Running table of contents.md"
+    "Computer Science/JUnit/1 JUnit jump-start.md",
+    "Computer Science/JUnit/JUnit 5.md",
+    "Computer Science/JUnit/JUnit Platform.md",
+    "Computer Science/JUnit/JUnit Vintage.md",
+    "Computer Science/JUnit/JUnit Jupiter.md",
+    "Computer Science/JUnit/JUnit in Action table of contents.md",
+    "Computer Science/JUnit/22 Implementing a test pyramid strategy with JUnit 5.md",
+    "Computer Science/JUnit/21 Behavior-drive development with JUnit 5.md",
+    "Computer Science/JUnit/20 Test-driven development with JUnit 5.md",
+    "Computer Science/JUnit/19 Testing database applications.md"
   ]
 }
