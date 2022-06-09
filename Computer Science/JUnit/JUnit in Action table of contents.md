@@ -8,7 +8,7 @@
 [[7 Coarse-grained testing with stubs]]
 [[8 Testing with mock objects]]
 [[9 In-container testing]]
-[[10 Running JUnit test from Maven 3]]
+[[10 Running JUnit tests from Maven 3]]
 [[11 Running JUnit tests from Gradle 6]]
 [[12 JUnit 5 IDE support]]
 [[13 Continuous integration with JUnit 5]]

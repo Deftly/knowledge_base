@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "793a6e23d961dff5",
+        "id": "02c1c2911f9dd3af",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -61,7 +61,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "87a3cc63752563ad",
@@ -103,17 +104,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "793a6e23d961dff5",
+  "active": "02c1c2911f9dd3af",
   "lastOpenFiles": [
     "Computer Science/JUnit/1 JUnit jump-start.md",
-    "Computer Science/JUnit/JUnit 5.md",
-    "Computer Science/JUnit/JUnit Platform.md",
-    "Computer Science/JUnit/JUnit Vintage.md",
-    "Computer Science/JUnit/JUnit Jupiter.md",
     "Computer Science/JUnit/JUnit in Action table of contents.md",
-    "Computer Science/JUnit/22 Implementing a test pyramid strategy with JUnit 5.md",
-    "Computer Science/JUnit/21 Behavior-drive development with JUnit 5.md",
-    "Computer Science/JUnit/20 Test-driven development with JUnit 5.md",
-    "Computer Science/JUnit/19 Testing database applications.md"
+    "Computer Science/JUnit/10 Running JUnit tests from Maven 3.md",
+    "Computer Science/JUnit/9 In-container testing.md",
+    "Obsidian basics.md",
+    "Extreme Programming Explained - Embrace Change.md",
+    "Computer Science/JUnit/JUnit 5.md",
+    "JUnit.md",
+    "Design Patterns.md",
+    "Computer Science/Maven/4 Maven Project Basics.md"
   ]
 }
