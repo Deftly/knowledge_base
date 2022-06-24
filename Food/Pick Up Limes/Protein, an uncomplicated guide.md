@@ -83,3 +83,6 @@ Many commonly eaten foods are already complementary, for example:
 It is absolutely possible to obtain adequate levels from food alone even as an athlete. If our requirements have been determined to be very high or we're unable to meet our needs from food alone we may choose to supplement with a powder. Some plant-based sources include soy protein, pea protein, hemp protein, flax protein, chia protein, and brown rice protein. When looking to purchase protein powders we can try to aim for brands that aren't heavily sweetened and have been assess for contaminants.
 
 In Canada, for example, once a department of the government has assessed a product and decided it's safe and of high quality, it issues a product licence along with an eight-digit Natural Product Number (NPN), which must appear on the label. It may be worthwhile to see if your local government has similar regulations and if a brand meets those regulations it may be one to consider.
+
+### Additional Reading
+[[Recipe List]]

@@ -33,9 +33,8 @@
 - The spread can be stored separately from the bread and the topping in an airtight container in the fridge for up to 4 days.
 
 
-### Watch it step-by-step
-https://www.youtube.com/watch?v=6y6YeD2m9RY (3:31)  
-
+### [Watch it step-by-step](https://www.youtube.com/watch?v=6y6YeD2m9RY) (3:31)  
 
 ### Additional Reading
 [[Protein, an uncomplicated guide]]
+[[Recipe List]]
