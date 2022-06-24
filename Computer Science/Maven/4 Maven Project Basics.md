@@ -28,7 +28,7 @@
 
 ## Understanding the *pom.xml* File
 - The *pom.xml* file is the most important file in a Maven project, it holds the configuration information needed by Maven. 
-- We start the *pom.xml* file the project element, then we provide the *groupId*, *artifactId*, and *version* coordinates. The *packaging* element tell Maven that it needs to create the specified archive for this project. Finally, the *developers* element is used to add information about the developers who work on this project.
+- We start the *pom.xml* file the *project* element, then we provide the *groupId*, *artifactId*, and *version* coordinates. The *packaging* element tell Maven that it needs to create the specified archive for this project. Finally, the *developers* element is used to add information about the developers who work on this project.
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -36,6 +36,36 @@
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId></groupId>
+  <groupId>com.sid.mavennotes</groupId>
+  <artifactId>mavenguide</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Getting Started with Maven</name>
+  <url></url>
+
+  <developers>
+    <developer>
+      <id>sid</id>
+      <name>Siddharth Buddharaju</name>
+      <email>siddharth.buddharaju@gmail.com</email>
+      <properties>
+        <active>true</active>
+      </properties>
+    </developer>
+  </developers>
 </project>
 ```
+
+#### Maven versioning
+- It is recommended that Maven projects use the following conventions for versioning:
+	{major-version}.{minor-version}.{incremental-version}-qualifier  
+
+- The major, minor and incremental values are numeric and the qualifier can have values such as RC(release candidate), alpha, beta, and SNAPSHOT.
+	- Ex: 1.0.0, 2.4.5-SNAPSHOT, 3.1.1-RC1  
+
+- The SNAPSHOT qualifier in the project's version indicates that the project is in a development stage. When a project use a SNAPSHOT dependency, every time the project is built, Maven will fetch and use the latest SNAPSHOT artifact.  
+
+- Most repository managers accept release builds once once. However, when developing in a continuous integration environment you want to build often and push your latest build to the repository manager so it is best practice to suffix your version with SNAPSHOT during development.
+
+## Properties in pom.xml

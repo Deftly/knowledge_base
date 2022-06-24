@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "02c1c2911f9dd3af",
+        "id": "ec7c236257707a6e",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Computer Science/JUnit/1 JUnit jump-start.md",
+            "file": "Protein, an uncomplicated guide.md",
             "mode": "source",
             "source": false
           }
@@ -78,7 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Computer Science/JUnit/1 JUnit jump-start.md",
+                "file": "Protein, an uncomplicated guide.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,24 +97,25 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
     "width": 300,
     "collapsed": true
   },
-  "active": "02c1c2911f9dd3af",
+  "active": "ec7c236257707a6e",
   "lastOpenFiles": [
-    "Computer Science/JUnit/1 JUnit jump-start.md",
-    "Computer Science/JUnit/JUnit in Action table of contents.md",
-    "Computer Science/JUnit/10 Running JUnit tests from Maven 3.md",
-    "Computer Science/JUnit/9 In-container testing.md",
+    "Protein, an uncomplicated guide.md",
+    "Frozen Yogurt Breakfast Bars.md",
+    "Frozen Yogurt Breakfast Bars(1).png",
     "Obsidian basics.md",
-    "Extreme Programming Explained - Embrace Change.md",
-    "Computer Science/JUnit/JUnit 5.md",
-    "JUnit.md",
-    "Design Patterns.md",
-    "Computer Science/Maven/4 Maven Project Basics.md"
+    "Food/Pick Up Limes/Avocado Toast with Chipotle Bean Spread.md",
+    "Pasted image 20220622184149.png",
+    "Pasted image 20220622184054.png",
+    "Fats and Oils.md",
+    "Amino Acids.md",
+    "Computer Science/Maven/1 Getting Started with Maven.md"
   ]
 }
