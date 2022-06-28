@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "77aa6db9d5cf93ce",
+        "id": "355c399a43463a30",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Food/Pick Up Limes/Frozen Yogurt Breakfast Bars.md",
+            "file": "Computer Science/Python/Real Python/Basic Data Types in Python.md",
             "mode": "preview",
             "source": false
           }
@@ -61,8 +61,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "87a3cc63752563ad",
@@ -78,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Food/Pick Up Limes/Frozen Yogurt Breakfast Bars.md",
+                "file": "Computer Science/Python/Real Python/Basic Data Types in Python.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,17 +104,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "77aa6db9d5cf93ce",
+  "active": "355c399a43463a30",
   "lastOpenFiles": [
-    "Food/Pick Up Limes/Frozen Yogurt Breakfast Bars.md",
-    "Food/Pick Up Limes/Avocado Toast with Chipotle Bean Spread.md",
-    "Stewed Berries.md",
-    "Almond Butter.md",
-    "Pasted image 20220624161214.png",
-    "Food/Pick Up Limes/Fats and Oils.md",
-    "Food/Pick Up Limes/Protein, an uncomplicated guide.md",
-    "Food/Pick Up Limes/Recipe List.md",
-    "Assets/Frozen Yogurt Breakfast Bars(1).png",
-    "Obsidian basics.md"
+    "Computer Science/Python/Real Python/Basic Data Types in Python.md",
+    "Computer Science/Maven/1 Getting Started with Maven.md",
+    "Computer Science/Python/Real Python/Introduction to Python.md",
+    "Computer Science/Python/Real Python/Python Learning Paths.md",
+    "Computer Science/Python/Real Python/Why Choose Python 3.md",
+    "Computer Science/Object Oriented Programming.md",
+    "Computer Science/Functional Programming.md",
+    "Computer Science/Python/Untitled.md",
+    "Amino Acids.md",
+    "Food/Pick Up Limes/Almond Butter.md"
   ]
 }
