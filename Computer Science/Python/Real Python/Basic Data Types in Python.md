@@ -72,20 +72,156 @@ k = 4e-3     # .004
 - Expressed in the form ***ax + bj***. 
 - Consists of 2 elements, the real element, and the imaginary element.
 - ***j*** is the square root of -1.   
+
+```Python
+a = 2+3j
+type(a)     #<class 'complex'>
+b = 3+5j
+a + b       # (5+8j)
+a * a       # (-5 + 12j)
+```
+
+[[Basic Data Types in Python#Overview|Overview]]
+
 # Strings
+- A sequence of zero of more characters.
+- Can be enclosed using " or ' characters.
+- Formats include raw and triple-quoted strings.
+
+ ```Python
+ a = "hello world"
+ b = 'hello world'
+ c = "I wasn't at school today."
+ type(a)                         #<class 'str'>
+ d = str(51)
+ d                               # contains the value '51' and is of <class 'str'> 
+```
+
+[[Basic Data Types in Python#Overview|Overview]]
 
 # Escape Sequences
+```Python
+a = "He said "I wasn't at school today" to me"    
+# The above line is not valid syntax, below is the proper syntax
+a = 'He said I wasn\'t at school today" to me'
+b = 'This is line 1.\n This is line 2.'
+# print(b) would return the following:
+# This is line1.
+# This is line2.
+
+# \' -  Single Quote
+# \" - Double Quote
+# \\ - Backslash
+# \n - Newline 
+# \t - Tab 
+# \r - Carriage Return
+# \b - Backspace
+# \f - Form Feed
+# \v - Vertical Tab
+# \onn - Character with octal value
+# \xnn - Character 
+```
+
+[[Basic Data Types in Python#Overview|Overview]]
 
 # Raw Strings
+- In a raw string escape sequence characters are not interpreted
+
+```Python
+a = "One line\nTwo!"
+# print(a) would result in the following:
+# One Line
+# Two!
+b = r"One Line\nTwo!"
+#print(b) would result in the follwing:
+# One Line\nTwo!
+``` 
+
+[[Basic Data Types in Python#Overview|Overview]]
 
 # Triple Quoted Strings
+- Can use both double and single quotes within the triple quotes without the need to use escape sequences.
+- Their main uses is to allow strings which cover multiple lines.
+- The most common use for triple quoted strings is to provide doc strings for functions.
+
+```Python
+print("""This is a "triple quoted" string, isn't it?""")
+
+print("""This strings spans across multiple lines.
+	  It isn't going wrong when I do this!
+	  Even if I do mulitiple empty lines...
+	  
+	  
+	  It still works!""")
+
+
+def my_function(value):
+	"""Takes a value and prints it to the screen"""
+	print(f"{value} is a nice value")
+	return
+```
+
+[[Basic Data Types in Python#Overview|Overview]]
 
 # Booleans
+- A variable that can take two values - *True* or *False*.
+- False is equivalent to 0, and True is equivalent to any non-zero number.
+- Objects have "truthiness" in Python, and making use of this can make for more readable, 'Pythonic' code.
+
+```Python
+a = True
+type(a)     #<class 'bool'>
+b = False
+c = 1
+bool(c)     # True
+bool(0)     # False
+```
+
+[[Basic Data Types in Python#Overview|Overview]]
 
 # Functions: Composite Data Types
+- Composite data types are made up of other data types.
+
+```Python
+a = [1, 2, 3, 4, 5]     # A list, definied using square brackets and a series of values seperated by commas
+a[0]                    # 1
+a[1]                    # 2
+a[-1]                   # 5
+a[-2]                   # 4
+a[1:3]                  # [2. 3] 
+a[1] = 6                # a = [1, 6, 3, 4, 5], lists are mutable
+
+
+b = (1, 2, 3, 4, 5)     # A tuple, looks very similar to a list but is defined with curved brackets
+b[0]                    # 1
+b[-1]                   # 5
+b[1:3]                  # (2, 3)
+b[1] = 6                # This will result in an error: 'tuple' object does not support item assignment.
+                        # Once you've created it, it can't be changed because it is immutable.
+
+
+a = [1, 2, 3, 3, 3, 3, 4]
+b = set(a)              # A set is a data structure which can only contain unique elements.
+print(a)                # [1, 2, 3, 3, 3, 3, 4]
+print(b)                # set([1, 2, 3, 4])
+c = list(b)             # cast to a list 
+print(c)                # [1, 2, 3, 4]
+
+
+a = dict()              # Creates an empty dictionary, can be thought of as a lookup table which allows you to store values
+                        # in it as key value pairs.
+a['name'] = 'Darren'    # Values are added with this notation, providing they key and it's corresponding value
+a['age'] = 48
+a                       # {'name': 'Darren', 'age': 48}
+print(a['age'])         # 48
+print(a['country'])     # Results in the following error: KeyError: 'country'. This is because the key 'country' does not exist.
+print(a.get('country')) # Returns the value None. This is a safer way to access values in a dictionary.
+```
+
+[[Basic Data Types in Python#Overview|Overview]]
 
 # Functions: Math
-
+  
 # Functions: Type Conversion
 
 # Functions: Iterables and Iterators
