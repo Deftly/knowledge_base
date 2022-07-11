@@ -9,6 +9,8 @@ Python is still maintained by a core development team at the Institute, and Guid
 ## Python is Popular
 The 2022 Stack Overflow Developer Survey ranked Python as the 4th most popular and the number one most wanted technology of the year tied with Rust. World-class software development companies around the globe use Python every single day, below are a few notable names:
 -  Google
+- YouTube
+	- About 5 billion videos are watched on YouTube every single day and 300 hours of video are uploaded to YouTube every minute
 - Facebook
 - Instagram
 - Spotify

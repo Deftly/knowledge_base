@@ -4,15 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "2d58d6d36f0eed01",
+        "id": "79c1a1447f3dd076",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Computer Science/Python/Real Python/Basic Data Types in Python.md",
-            "mode": "preview",
-            "source": false
-          }
+          "type": "graph",
+          "state": {}
         }
       }
     ],
@@ -40,7 +36,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "functional programming",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,7 +74,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Computer Science/Python/Real Python/Basic Data Types in Python.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,25 +92,24 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
     "width": 300,
     "collapsed": true
   },
-  "active": "2d58d6d36f0eed01",
+  "active": "79c1a1447f3dd076",
   "lastOpenFiles": [
-    "Computer Science/Python/Real Python/Basic Data Types in Python.md",
+    "Computer Science/Terraform/1 Why Terraform.md",
     "Computer Science/Python/Real Python/Why Choose Python 3.md",
-    "Computer Science/Vim/1 Introducing vi and Vim.md",
-    "Computer Science/Vim/Learning the vi and Vim Editors, 8th edition table of contents.md",
-    "Computer Science/Maven/1 Getting Started with Maven.md",
-    "Computer Science/Python/Real Python/Introduction to Python.md",
-    "Computer Science/Python/Real Python/Python Learning Paths.md",
-    "Computer Science/Object Oriented Programming.md",
+    "5 Introducing the ex Editor.md",
+    "Computer Science/Terraform/Terraform Up & Running table of contents.md",
+    "Computer Science/Terraform/Introduction to Terraform.md",
     "Computer Science/Functional Programming.md",
-    "Computer Science/Python/Untitled.md"
+    "Assets/VMs vs Containers.png",
+    "Assets/Server Templating 1.png",
+    "Pasted image 20220708131214.png",
+    "Computer Science/Terraform/Terraform Documentation.md"
   ]
 }
