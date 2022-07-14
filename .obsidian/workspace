@@ -4,11 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "79c1a1447f3dd076",
+        "id": "f9963ae7e0147d66",
         "type": "leaf",
         "state": {
-          "type": "graph",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "Computer Science/Terraform/1 Why Terraform.md",
+            "mode": "preview",
+            "source": false
+          }
         }
       }
     ],
@@ -74,6 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Computer Science/Terraform/1 Why Terraform.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,17 +104,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "79c1a1447f3dd076",
+  "active": "f9963ae7e0147d66",
   "lastOpenFiles": [
     "Computer Science/Terraform/1 Why Terraform.md",
+    "Computer Science/Terraform/2 Getting Started with Terraform.md",
+    "Assets/Terraform + Packer.png",
+    "Assets/Terraform + Ansible.png",
+    "The Go programming language.md",
+    "Go.md",
+    "Untitled.md",
     "Computer Science/Python/Real Python/Why Choose Python 3.md",
     "5 Introducing the ex Editor.md",
-    "Computer Science/Terraform/Terraform Up & Running table of contents.md",
-    "Computer Science/Terraform/Introduction to Terraform.md",
-    "Computer Science/Functional Programming.md",
-    "Assets/VMs vs Containers.png",
-    "Assets/Server Templating 1.png",
-    "Pasted image 20220708131214.png",
-    "Computer Science/Terraform/Terraform Documentation.md"
+    "Computer Science/Terraform/Terraform Up & Running table of contents.md"
   ]
 }

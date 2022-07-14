@@ -289,3 +289,53 @@ When your infrastructure is defined as code you are able to use a wide variety o
 - You can package your infrastructure into reusable modules, so that instead of doing every deployment for every product in every environment from scratch you can build on top of know, documented, and tested pieces.
 
 # How Terraform Works
+Here is a high-level overview of how Terraform works. Terraform is written in [[The Go programming language|Go]], the Go code compiles down to a single binary(or rather, one binary for each of the supported operating systems) called ***terraform***. This binary can be used to deploy infrastructure from your laptop or build server or just about any other computer without any extra infrastructure to make that happen. This is because the ***terraform*** binary makes API calls to one or more *providers* such as AWS, Azure, Google Cloud, and many more. This means that Terraform gets to leverage the infrastructure those providers are already running for their API servers, as well as the authentication mechanisms you're already using with those providers. 
+
+Terraform is able to figure out what API calls to make when we create *Terraform configurations*, which are text files that specify the infrastructure we want to create. Here is an example configuration:
+
+```hcl
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro" 
+}
+
+resource "google_dns_record_set" "a" {
+  name         = "demo.google-example.com"
+  managed_zone = "example-zone"
+  type         = "A"
+  ttl          = 300
+  rrdatas      = [aws_instance.example.public_ip]
+}
+```
+
+The above code instructs Terraform to make API calls to AWS to deploy a server and then make API calls to Google Cloud to create a DNS entry pointing to the AWS server's IP address. In just a single, simple syntax Terraform allows you to deploy interconnected resources across multiple cloud providers. 
+
+When someone on your team needs to make changes to the infrastructure, instead of updating the infrastructure manually and directly on the servers, they make their changes in the Terraform configuration files, validate those changes through automated tests and code reviews, commit the updated code to version control, and then run the ***terraform apply*** command to have Terraform make the necessary API calls to deploy the changes.
+
+## Using Multiple Tools Together
+It is very likely that you will use multiple tools in combination to build your infrastructure as each tool has strengths and weaknesses. Below are a few common combinations.
+
+### Provisioning plus configuration management
+Example: Terraform and Ansible. You use Terraform to deploy all the underlying infrastructure, including network topology, data stores, load balancers, and servers. You then use Ansible to deploy your apps on top of those servers as depicted below.
+
+![[Terraform + Ansible.png]]
+
+This is an easy approach to get started with because there is no extra infrastructure to run since both Ansible and Terraform are client-only applications. Additionally there are many ways to get Ansible and Terraform to work together(Terraform adds special tags to your servers and Ansible uses those tags to find the server and configure them). The major downside is that using Ansible typically means that you're writing a lot of procedural code, with mutable servers, so as your code base, infrastructure, and team grow, maintenance can become difficult.
+
+### Provisioning plus server templating
+Example: Terraform and Packer. You can use Packer to package your apps as VM images. You then use Terraform to deploy servers with the VM images and the rest of your infrastructure, including network topology, data stores, and load balancers as depicted below.
+
+![[Terraform + Packer.png]]
+
+This is also an easy approach to get started with because there is no extra infrastructure to run. Moreover, this is an immutable infrastructure approach which will make maintenance easier. However, there are two major drawbacks. First, VMs can take a long time to build and deploy, which will slow down iteration. Second, as you'll see later, the deployment strategies you implement with Terraform are limited (you can't implement blue-green deployment natively in Terraform), so you either end up writing lots of complicated deployment scripts, or you turn to orchestration tools.
+
+### Provisioning plus server templating plus orchestration
+Example: Terraform, Packer, Docker, and Kubernetes. You can use Packer to create a VM image that has Docker and Kubernetes installed. You then use Terraform to deploy a cluster of servers each of which runs this VM image, and the rest of your infrastructure. Finally when the cluster of servers boots up, it forms a Kubernetes cluster that you use to run and manage your Dockerized applications, as depicted below:
+
+![[Terraform + Packer + Docker + Kubernetes.png]]
+
+The advantage of this approach is that Docker images build fairly quickly, you can run and test the on your local computer, and you can take advantage of all the built-in functionality of Kubernetes, including various deployment strategies, auto healing, scaling, and so on. The drawbacks are the added complexity, both in terms of infrastructure (Kubernetes clusters can be difficult and expensive to deploy and operate), and in terms of several extra layers of abstraction (Kubernetes, Docker, Packer) to learn, manage, and debug.
+
+#### Continue Reading
+[[2 Getting Started with Terraform]]
+[[Terraform Up & Running table of contents]]
