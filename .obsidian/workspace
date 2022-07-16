@@ -4,13 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "f9963ae7e0147d66",
+        "id": "ac0adef7b55c70d9",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Computer Science/Terraform/1 Why Terraform.md",
-            "mode": "preview",
+            "file": "Computer Science/Terraform/2 Getting Started with Terraform.md",
+            "mode": "source",
             "source": false
           }
         }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "functional programming",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -57,7 +57,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -78,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Computer Science/Terraform/1 Why Terraform.md",
+                "file": "Computer Science/Terraform/2 Getting Started with Terraform.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,17 +105,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "f9963ae7e0147d66",
+  "active": "ac0adef7b55c70d9",
   "lastOpenFiles": [
-    "Computer Science/Terraform/1 Why Terraform.md",
     "Computer Science/Terraform/2 Getting Started with Terraform.md",
-    "Assets/Terraform + Packer.png",
-    "Assets/Terraform + Ansible.png",
-    "The Go programming language.md",
-    "Go.md",
-    "Untitled.md",
-    "Computer Science/Python/Real Python/Why Choose Python 3.md",
-    "5 Introducing the ex Editor.md",
-    "Computer Science/Terraform/Terraform Up & Running table of contents.md"
+    "Food/Pick Up Limes/Frozen Yogurt Breakfast Bars.md",
+    "Assets/EC2 instance Terraform.png",
+    "Obsidian basics.md",
+    "Computer Science/The Go programming language.md",
+    "Computer Science/Functional Programming.md",
+    "Computer Science/Terraform/Terraform Up & Running table of contents.md",
+    "Inspiration/The Vision of Robert Kennedy.md",
+    "Inspiration/Works I Find Compelling.md",
+    "Inspiration/Jim Carrey MIU Commencement Address 2014.md"
   ]
 }
