@@ -57,13 +57,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "87a3cc63752563ad",
@@ -105,17 +103,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "ac0adef7b55c70d9",
+  "active": "436a6a1f9736b098",
   "lastOpenFiles": [
     "Computer Science/Terraform/2 Getting Started with Terraform.md",
+    "Assets/Deploy simple web server Terraform.png",
+    "Assets/EC2 Instance Terraform.png",
+    "Computer Science/Terraform/1 Why Terraform.md",
+    "Computer Science/The Go programming language.md",
     "Food/Pick Up Limes/Frozen Yogurt Breakfast Bars.md",
     "Assets/EC2 instance Terraform.png",
     "Obsidian basics.md",
-    "Computer Science/The Go programming language.md",
     "Computer Science/Functional Programming.md",
-    "Computer Science/Terraform/Terraform Up & Running table of contents.md",
-    "Inspiration/The Vision of Robert Kennedy.md",
-    "Inspiration/Works I Find Compelling.md",
-    "Inspiration/Jim Carrey MIU Commencement Address 2014.md"
+    "Computer Science/Terraform/Terraform Up & Running table of contents.md"
   ]
 }

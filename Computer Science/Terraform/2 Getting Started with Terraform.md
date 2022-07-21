@@ -27,7 +27,7 @@ Where **PROVIDER** is the name of a provider (e.g **aws**), **TYPE** is the type
 
 ```hcl
 resource "aws_instance" "example" {
-  ami           = "ami-0186e3fec9b0283ee"
+  ami           = "ami-085284d24fe829cd0"
   instance_type = "t2.micro"
 }
 ```
@@ -35,7 +35,7 @@ resource "aws_instance" "example" {
 The **aws_instance** resource supports many different arguments, but for now, you only need to set the two required ones:
 
 #### ami
-- The Amazon Machine Image to run on the EC2 Instance. You can find free and paid AMIs in the AWS Marketplace or create your own using tools such as Packer. The preceding code example sets the **ami** parameter to the ID of Red Hat Enterprise Linux 8 AMI which is free to use.
+- The Amazon Machine Image to run on the EC2 Instance. You can find free and paid AMIs in the AWS Marketplace or create your own using tools such as Packer. The preceding code example sets the **ami** parameter to the ID of an Ubuntu image which is free to use.
 
 #### instance_type
 - The type of EC2 Instance to run. Each type of EC2 Instance provides a different amount of CPU, memory, disk space, and networking capacity. The preceding example uses **t2.micro**, which has one virtual CPU, 1 GB of memory, and is part of the AWS free tier.
@@ -87,7 +87,7 @@ Terraform will perform the following actions:
 
   # aws_instance.example will be created
   + resource "aws_instance" "example" {
-      + ami                                  = "ami-0186e3fec9b0283ee"
+      + ami                                  = "ami-085284d24fe829cd0"
       + arn                                  = (known after apply)
       + associate_public_ip_address          = (known after apply)
       + availability_zone                    = (known after apply)
@@ -125,7 +125,7 @@ Terraform will perform the following actions:
 
   # aws_instance.example will be created
   + resource "aws_instance" "example" {
-      + ami                                  = "ami-0186e3fec9b0283ee"
+      + ami                                  = "ami-085284d24fe829cd0"
       + arn                                  = (known after apply)
       + associate_public_ip_address          = (known after apply)
       + availability_zone                    = (known after apply)
@@ -172,13 +172,13 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
 Congrats, you've just deployed an EC2 Instance in your AWS account using Terraform! We can confirm this by looking at the EC2 console in our AWS account.
-![[EC2 instance Terraform.png]]
+![[Assets/EC2 instance Terraform.png]]
 
 Sure enough, the Instance is there. We can see thought that the EC2 Instance doesn't have a name. To add one, you can add **tags** to the **aws_instance** resource:
 
 ```hcl
 resource "aws_instance" "example" {
-  ami           = "ami-0186e3fec9b0283ee"
+  ami           = "ami-085284d24fe829cd0"
   instance_type = "t2.micro"
 
   tags = {
@@ -268,3 +268,58 @@ git pull origin main
 
 
 # Deploy a Single Web Server
+Our next step is to run a web server on this instance.The goal is to deploy the simplest web architecture possible: a single web server that can respond
+
+![[Deploy simple web server Terraform.png]]
+
+In a real-world case you'd likely built the web server using a web framework Like Ruby on Rails or Django but for now we'll run a very simple web server that always returns the text "Hello, World".
+
+```shell
+#!/bin/bash
+echo "Hello, World" > index.html
+nohup busybox httpd -f -p 8080 
+```
+
+This is a Bash script that writes the text "Hello, World" into index.html and runs a tool called **busybox** (which is installed by default on Ubuntu) to fire up a web server on port 8080. The **busybox** command is wrapped with **nohup** and **&** so that the web server runs permanently in the background, whereas the bash script itself can exit.
+
+> The reason the example uses port 8080 rather than the default HTTP port 80 is that listening on any port less than 1024 requires root privileges. This is a security risk because any attacker who manages to compromise your server would get root privileges too. 
+
+How do we get the EC2 instance to run this script? Normally you would use a tool like Packer to create a custom AMI that has the web server installed on it. Since the web server in this example is a simple one-liner that uses **busybox**, you can use a plain Ubuntu AMI and run the "Hello, World" script as part of the EC2 Instance's *User Data* configuration. When you launch an EC2 Instance, you have the option of passing either a shell script or cloud-init directive to User Data, and the EC2 Instance will execute it during boot. You pass a shell script to User Data by setting the **user_data** argument in the your Terraform code as follows:
+
+```hcl
+resource "aws_instance" "example" {
+  ami           = "ami-085284d24fe829cd0"
+  instance_type = "t2.micro"
+
+  user_data = <<-EOF
+  #!/bin/bash
+  echo "Hello, World" > index.html
+  nohup busybox httpd -f -p 8080 &
+  EOF
+
+  tags = {
+    Name = "terraform-example"
+  }
+}
+```
+
+The **<<-EOF** and **EOF** are Terraform's *heredoc* syntax, which allows you to create multiline strings without having to insert new line characters everywhere.
+
+By default, AWS does not allow any incoming or outgoing traffic from and EC2 Instance. To allow the EC2 Instance to receive traffic on port 8080, you need to create a *security group*:
+
+```hcl
+resouce "aws_security_group" "instance" {
+  name = "terraform-example-instance"
+
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+```
+
+This code creates a new resource called **aws_security_group** and specifies that this group allows incoming TCP requests on port 8080 from CIDR block 0.0.0.0/0. *CIDR blocks* are a concise way to specify IP address ranges. For example, a CIDR block of 10.0.0.0/24 represents all IP addresses between 10.0.0.0 and 10.0.0.255. The CIDR block 0.0.0.0/0 is an IP address range that includes all possible IP addresses, so this security group allows incoming requests on port 8080 from any IP.
+
+In addition to creating the security group you need to tell you EC2 Instance to use it by passing the ID of the security group into the **vpc_security_group_ids** argument of the **aws_instance** resource. To do this we uses Terraform *expressions* 
