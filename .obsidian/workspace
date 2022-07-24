@@ -4,15 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "ac0adef7b55c70d9",
+        "id": "1e30230f2695ff39",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Computer Science/Terraform/2 Getting Started with Terraform.md",
-            "mode": "source",
-            "source": false
-          }
+          "type": "graph",
+          "state": {}
         }
       }
     ],
@@ -40,7 +36,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "sq",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -57,11 +53,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "87a3cc63752563ad",
@@ -77,7 +75,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Computer Science/Terraform/2 Getting Started with Terraform.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,17 +100,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "436a6a1f9736b098",
+  "active": "1e30230f2695ff39",
   "lastOpenFiles": [
-    "Computer Science/Terraform/2 Getting Started with Terraform.md",
-    "Assets/Deploy simple web server Terraform.png",
-    "Assets/EC2 Instance Terraform.png",
-    "Computer Science/Terraform/1 Why Terraform.md",
-    "Computer Science/The Go programming language.md",
-    "Food/Pick Up Limes/Frozen Yogurt Breakfast Bars.md",
-    "Assets/EC2 instance Terraform.png",
-    "Obsidian basics.md",
-    "Computer Science/Functional Programming.md",
-    "Computer Science/Terraform/Terraform Up & Running table of contents.md"
+    "Computer Science/Ant.md",
+    "Computer Science/Extreme Programming Explained - Embrace Change.md",
+    "Computer Science/Gradle.md",
+    "Computer Science/Thymeleaf.md",
+    "Computer Science/Logback.md",
+    "Computer Science/Ivy.md",
+    "Computer Science/SQL.md",
+    "Computer Science/FTP.md",
+    "Computer Science/Design Patterns.md",
+    "Computer Science/Log4J.md"
   ]
 }

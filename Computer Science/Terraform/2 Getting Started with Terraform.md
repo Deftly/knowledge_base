@@ -311,15 +311,270 @@ By default, AWS does not allow any incoming or outgoing traffic from and EC2 Ins
 resouce "aws_security_group" "instance" {
   name = "terraform-example-instance"
 
-  ingress {
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  ingress = [ {
+    cidr_blocks = [ "0.0.0.0/0" ]
+    description = "example vpc"
+    from_port = 8080
+    to_port = 8080
+    protocol = "tcp"
+    ipv6_cidr_blocks = [ "0.0.0.0/0" ]
+    prefix_list_ids = []
+    security_groups = []
+    self = false
+  } ]
 }
 ```
 
 This code creates a new resource called **aws_security_group** and specifies that this group allows incoming TCP requests on port 8080 from CIDR block 0.0.0.0/0. *CIDR blocks* are a concise way to specify IP address ranges. For example, a CIDR block of 10.0.0.0/24 represents all IP addresses between 10.0.0.0 and 10.0.0.255. The CIDR block 0.0.0.0/0 is an IP address range that includes all possible IP addresses, so this security group allows incoming requests on port 8080 from any IP.
 
-In addition to creating the security group you need to tell you EC2 Instance to use it by passing the ID of the security group into the **vpc_security_group_ids** argument of the **aws_instance** resource. To do this we uses Terraform *expressions* 
+In addition to creating the security group you need to tell you EC2 Instance to use it by passing the ID of the security group into the **vpc_security_group_ids** argument of the **aws_instance** resource. To do this we uses Terraform *expressions*. An expression in Terraform is anything that returns a value. The simplest type of expressions are *literals* such as strings (e.g. "ami-ami-085284d24fe829cd0") and numbers, but Terraform also supports many other types of expressions.
+
+One particularly useful type of expression is a *reference* which allows you to access values from other parts of your code. To access the ID of the security group resource, you are going to use a *resource attribute reference* which uses the following syntax:
+
+```hcl
+<PROVIDER>_<TYPE>.<NAME>.<ATTRIBUTE>
+```
+
+Where **PROVIDER** is the name of the provider (e.g. **aws**), **TYPE** is the type of resource (e.g. **security_group**), **NAME** is the name of that resource (e.g., the security group is named "**instance**"), and **ATTRIBUTE** is either one of the arguments of that resource (e.g., **name**) or one of the attributes *exported* by the resource (you can find the list of available attributes in the documentation for each resource). The security group exports an attribute called **id**, so the expression to reference it will look like this:
+
+```hcl
+aws_security_group.instance.id
+```
+
+You can use this security group ID in the **vpc_security_group_ids** argument of the **aws_instance**:
+
+```hcl
+resource "aws_instance" "example" {
+  ami                    = "ami-085284d24fe829cd0"
+  instance_type          = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.instance.id]
+
+  user_data = <<-EOF
+			  #!/bin/bash
+			  echo "Hello, World" > index.html
+			  nohup busybox httpd -f -p 8080 &
+			  EOF
+			
+  tags = {
+    Name = "terraform-example"
+  }
+}
+```
+
+When you add a reference from one resource to another you create an *implicit dependency*. Terraform parses these dependencies, builds a dependency graph from them, and uses that to automatically determine in which order it should create resources. You can even get Terraform to show you the dependency graph by running the graph command.
+
+If you run the **apply** command you'll see that Terraform wants to create a security group and replace the EC2 Instance with a new one that has the new user data:
+
+```bash
+[user@host]$ terraform apply
+
+(...) 
+Terraform will perform the following actions: 
+
+# aws_instance.example must be replaced 
+-/+ resource "aws_instance" "example" { 
+		  ami                    = "ami-0c55b159cbfafe1f0" 
+		~ availability_zone      = "us-east-2c" -> (known after apply) 
+		~ instance_state         = "running" -> (known after apply) 
+		  instance_type          = "t2.micro" 
+		  (...) 
+		+ user_data              = "c765373..." # forces replacement 
+		~ volume_tags            = {} -> (known after apply) 
+		~ vpc_security_group_ids = [ 
+			- "sg-871fa9ec",
+		  ] -> (known after apply) 
+		  (...) } 
+	
+
+  # aws_security_group.instance will be created
+  + resource "aws_security_group" "instance" {
+      + arn                    = (known after apply)
+      + description            = "Managed by Terraform"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "example vpc"
+              + from_port        = 8080
+              + ipv6_cidr_blocks = [
+                  + "0.0.0.0/0",
+                ]
+              + prefix_list_ids  = [
+                  + "value",
+                ]
+              + protocol         = "tcp"
+              + security_groups  = [
+                  + "value",
+                ]
+              + self             = false
+              + to_port          = 8080
+            },
+        ]
+      + name                   = "terraform-example-instance"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags_all               = (known after apply)
+      + vpc_id                 = (known after apply)
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: 
+```
+
+The -/+ in the **plan** output means "replace"; look for the text "forces replacement" in the plan output to figure out what is forcing Terraform to do a replacement. Many of the arguments on the **aws_instance** resource will force a replacement if changed, which means that the original EC2 Instance will be terminated and a completely new Instance will be created. 
+
+This is an example of the immutable infrastructure paradigm. It's worth mentioning that while the web server is being replaced, any users of that web server would experience downtime, we'll see how to do a zero-downtime deployment with Terraform in [[5 Terraform Tips and Tricks - Loops, If-Statements, Deployment, and Gotchas|Chapter 5]]. 
+
+Once the plan has been applied and our new instance is running we can find it's public IP address in the description panel and then use **curl** to make an HTTP request to the IP address at port 8080:
+
+```bash
+[user@host] curl http://<EC2_INSTANCE_PUBLIC_IP>:8080
+Hello, World
+```
+
+
+## Network Security
+A VPC is partitioned into one or more *subnets* each with its own IP addresses. The subnets in the Default VPC are all *public subnets*, which means they get IP addresses that are accessible from the public internet, which is why you are able to test your EC2 Instance from your home computer.
+
+Running a server in a public subnet is fine for a quick experiment but in real-world usage it's a security risk. Hackers are *constantly* scanning IP addresses at random for weaknesses. If your servers are exposed publicly, all it takes is accidentally leaving a single port unprotected or running out-of-date code with a know vulnerability, and someone can break in.
+
+Therefore, for production systems, you should deploy all your servers, and certainly all of your data stores, in *private subnets*, which have IP addresses that can be accessed only from within the VPC and not from the public internet. The only servers you should run in public subnets are a small number of reverse proxies and load balancers that you lock down as much as possible.
+
+
+# Deploy a Configurable Web Server
+You might have noticed that our code has the port 8080 duplicated in both the security group and user data configuration. This violates the *Don't repeat Yourself (DRY)* principle: every piece of knowledge must have a single, unambiguous, authoritative representation within a system. Having the port number in multiple places it's easy to update it in one place but forget to make the same changes elsewhere.
+
+To make our code more configurable and DRY Terraform allows you to define *input variables*. Here's the syntax for declaring a variable:
+
+```hcl
+variable "name" {
+  [CONFIG ...]
+}
+```
+
+The body of the variable declaration can contain three parameters, all of them optional:
+
+**description**
+It's always a good idea to use this parameter to document how the variable is used. The description helps make your code more readable and also is show when running the **plan** or **apply** commands.
+
+**default**
+There are a number of ways to provide a value for the variable including passing it in at the command line (using the **-var** option), via a file (using the **-var -file** option), or via an environment variable (Terraform looks for environment variables of the name **TF_VAR_<variable_name>**). If no value is passed in the variable will fall back to this default, and if there is no default value Terraform will interactively prompt the user for one.
+
+**type**
+This allows you to enforce *type constraints* on the variables a user passes in. Terraform supports a number of type constraints, including **string**, **number**, **bool**, **list**, **map**, **set**, **object**, **tuple**, and **any**. If you don't specify a type Terraform assumes the type is **any**.
+
+---
+
+We can combine type constraints. For example, here's a list input variable that requires all items in the list to be numbers:
+
+```hcl
+variable "list_numeric_example" {
+  description = "An example of a numeric list in Terraform"
+  type = list(number)
+  default = [1, 2, 3]
+}
+```
+
+We can also create more complicated *structural types* using the **object** and **tuple** type constraints:
+
+```hcl
+variable "object_example" {
+  description = "An example of a structural type in Terraform"
+  type        = object([
+    name    = string
+    age     = number
+    tags    = list(string)
+    enabled = bool
+  ])
+
+  default = {
+    name    = "value1"
+    age     = 42
+    tags    = ["a", "b", "c"]
+    enabled = true
+  }
+}
+```
+
+For the web server example, all we need is a variable that stores the port number:
+
+```hcl
+variable "server_port" {
+  description = "The port the server will use for HTTP requests"
+  type        = number
+  default     = 8080
+}
+```
+
+To use the value from an input variable in your Terraform code, you can use a type of expression called a *variable reference* which has the following syntax: **var.<VARIABLE_NAME>**. Below is our updated code using variable references.
+
+```hcl
+resource "aws_instance" "example" {
+  ami                    = "ami-085284d24fe829cd0"
+  type                   = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.instance.id]
+
+  user_data = <<-EOF
+              #!/bin/bash
+              echo "Hello, World" > index.html
+              nohup busybox httpd -f -p ${var.server_port} &
+              EOF
+}
+
+resource "aws_security_group" "instance" {
+  name = terraform-example-instance
+
+ ingress = [{
+   cidr_blocks      = ["0.0.0.0/0"]
+   description      = "example-vpc"
+   from_port        = var.server_port
+   to_port          = var.server_port
+   protocol         = "tcp"
+   ipv6_cidr_blocks = ["0.0.0.0/0"]
+   prefix_list_ids  = []
+   security_groups  = []
+   self             = false
+ }]
+}
+```
+
+In addition to input variables, Terraform also allows you to define *output variables* by using the following syntax:
+
+```hcl
+output "<NAME>" {
+  value = <VALUE>
+  [CONFIG ...]
+}
+```
+
+The **NAME** is the name of the output variable, the **VALUE** can be any Terraform expression that you would like to output. The **CONFIG** can contain two additional parameters, both optional:
+
+**description**
+It's always a good idea to use this parameter to document what type of data is contained in the output variable.
+
+**sensitive**
+Set this parameter to **true** to instruct Terraform not to log this output at the end of **terraform apply**. This is useful if the output variable contains sensitive material or secrets such as passwords or private keys.
+
+--- 
+
+For example, instead of having to manually poke around the EC2 console to find the IP address of your server, you can provide the IP address as an output variable:
+
+```hcl
+output "public_ip" {
+  value       = [aws_instance.example.public_ip]
+  description = "The public IP address of the web server"
+}
+```
+
+Input and output variables are essential ingredients in creating configurable and reusable infrastructure as code which will be covered in further detail in [[4 How to Create Reusable Infrastructure with Terraform Modules|chapter 4]].
+
+# Deploying a Cluster of Web Servers
