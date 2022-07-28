@@ -4,11 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "1e30230f2695ff39",
+        "id": "c7496d079a02d09b",
         "type": "leaf",
         "state": {
-          "type": "graph",
-          "state": {}
+          "type": "image",
+          "state": {
+            "file": "Assets/ALB Terraform.png"
+          }
         }
       }
     ],
@@ -36,7 +38,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "sq",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -53,13 +55,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "87a3cc63752563ad",
@@ -75,6 +75,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Assets/ALB Terraform.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,17 +101,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "1e30230f2695ff39",
+  "active": "c7496d079a02d09b",
   "lastOpenFiles": [
+    "Computer Science/Terraform/2 Getting Started with Terraform.md",
+    "Computer Science/Terraform/Terraform Up & Running table of contents.md",
+    "Computer Science/Terraform/1 Why Terraform.md",
+    "Assets/ELB Terraform.png",
+    "Assets/Auto Scaling Group Terraform.png",
     "Computer Science/Ant.md",
     "Computer Science/Extreme Programming Explained - Embrace Change.md",
     "Computer Science/Gradle.md",
     "Computer Science/Thymeleaf.md",
-    "Computer Science/Logback.md",
-    "Computer Science/Ivy.md",
-    "Computer Science/SQL.md",
-    "Computer Science/FTP.md",
-    "Computer Science/Design Patterns.md",
-    "Computer Science/Log4J.md"
+    "Computer Science/Logback.md"
   ]
 }
